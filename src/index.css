@@ -1,0 +1,98 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+#notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px auto;
+}
+
+.note {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 15px;
+  width: 200px;
+}
+
+.note h3 {
+  color: #333;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.note p {
+  color: #666;
+  font-size: 1em;
+}
+
+/* Ajouter du style pour le bouton de suppression */
+.note button {
+  background-color: #e74c3c; /* Rouge */
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.note button:hover {
+  background-color: #c0392b; /* Rouge plus foncé au survol */
+}
+
+
+#form-newNote {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  padding: 20px;
+  width: 400px;
+}
+
+#form-newNote label {
+  display: block;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+#form-newNote input,
+#form-newNote textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+#form-newNote textarea {
+  height: 200px;
+}
+
+#form-newNote button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#form-newNote button:hover {
+  background-color: #45a049;
+}

@@ -14,7 +14,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("form-newNote");
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const newNote = { title: newNoteTitle.value, content: newNoteContent.value };
+    const newNote = {
+      title: newNoteTitle.value,
+      content: newNoteContent.value,
+    };
     writeNoteToJson(newNote);
     AddNoteToPage(notesContainer, newNote);
   });
@@ -76,7 +79,7 @@ function AddNoteToPage(container, note) {
 
   // Attacher un gestionnaire d'événements pour la suppression
   deleteButton.addEventListener("click", function () {
-    console.log("Je ne veux plus voir cette note !");
+    removeNote(container, note);
   });
 
   noteContainer.appendChild(noteTitle);
@@ -85,4 +88,42 @@ function AddNoteToPage(container, note) {
   noteContainer.classList.add("note"); //Classe CSS
 
   container.appendChild(noteContainer);
+}
+
+function removeNote(container, note) {
+  removeNoteToJSON(note);
+  removeNoteToPage(container, note);
+}
+
+function removeNoteToJSON(note) {
+  // Recherchez la note dans le tableau par son titre
+  const indexToRemove = notes.findIndex(
+    (ANote) => ANote.content === note.content
+  );
+
+  if (indexToRemove !== -1) {
+    // Supprimez la note du tableau
+    notes.splice(indexToRemove, 1);
+
+    // Convertir les données mises à jour en format JSON
+    const jsonNotes = JSON.stringify(notes, null, 2);
+
+    // Écrire dans le fichier
+    fs.writeFile(__dirname + "/data.json", jsonNotes, "utf-8", (err) => {
+      if (err) {
+        console.error("Erreur lors de l'écriture du fichier JSON :", err);
+      }
+    });
+  }
+}
+
+function removeNoteToPage(container, note) {
+  // Recherchez l'élément de note par son contenu
+  const noteToRemove = Array.from(container.children).find(
+    (ANote) => ANote.querySelector("p").innerHTML === note.content
+  );
+
+  if (noteToRemove) {
+    container.removeChild(noteToRemove);
+  }
 }

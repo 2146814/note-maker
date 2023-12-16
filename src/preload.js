@@ -72,7 +72,7 @@ function AddNoteToPage(container, note) {
   noteTitle.innerHTML = note.title;
 
   var noteContent = document.createElement("p");
-  noteContent.innerHTML = note.content.replace(/\n/g, "<br>");
+  noteContent.innerHTML = note.content;
 
   var deleteButton = document.createElement("button");
   deleteButton.innerHTML = "Supprimer";
@@ -120,8 +120,7 @@ function removeNoteToJSON(note) {
 function removeNoteToPage(container, note) {
   // Recherchez l'élément de note par son contenu
   const noteToRemove = Array.from(container.children).find(
-    (ANote) => ANote.querySelector("p").innerHTML === note.content
-  );
+    (ANote) => ANote.querySelector("p").innerHTML === note.content);
 
   if (noteToRemove) {
     container.removeChild(noteToRemove);
